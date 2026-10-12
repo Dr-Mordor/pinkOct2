@@ -17,11 +17,6 @@
     "#بصمة_حياة #اطمنتي_عليها\n" +
     CAMPAIGN_URL;
 
-  var VIDEO_SCRIPT =
-    "0–5 ثوانٍ | لقطة تجمع أمًا وابنتها: «في كل امرأة قصة وحلم يستحق أن يستمر.»\n" +
-    "5–10 ثوانٍ | رسالة على الهاتف: «في امرأة بتحبيها… اطمنتي عليها؟»\n" +
-    "10–15 ثانية | شعار الحملة ورابطها: «اسألي عن الفحص المناسب لكِ. ابدئي رحلة الاطمئنان مع بصمة حياة.»";
-
   var QUESTIONS = [
     {
       title: "لمن تقومين بهذا الاستبيان اليوم؟",
@@ -186,46 +181,16 @@
     }
   });
 
-  /* ---------- Digital kit tabs ---------- */
-  var KIT = {
-    social: { overline: "جاهز للنشر", title: "منشور يقرّب الرسالة.", copy: SOCIAL_POST, btn: "انسخي المنشور", ok: "تم نسخ المنشور." },
-    video: { overline: "15 ثانية / Reels & Stories", title: "قصة قصيرة. اهتمام كبير.", copy: VIDEO_SCRIPT, btn: "انسخي السيناريو", ok: "تم نسخ سيناريو الفيديو." }
-  };
-  var tab = "social";
-  var tabs = document.querySelectorAll(".kit-tabs [role=tab]");
-
-  function setTab(name, focus) {
-    tab = name;
-    var k = KIT[name];
-    tabs.forEach(function (t) {
-      var on = t.getAttribute("data-tab") === name;
-      t.setAttribute("aria-selected", on ? "true" : "false");
-      t.tabIndex = on ? 0 : -1;
-      if (on && focus) t.focus();
-    });
-    $("#kit-panel").setAttribute("aria-labelledby", name + "-tab");
-    $("#kit-overline").textContent = k.overline;
-    $("#kit-title").textContent = k.title;
-    $("#kit-copy").textContent = k.copy;
-    $("#kit-copy-btn span").textContent = k.btn;
-    $("#kit-status").textContent = "";
-  }
-  tabs.forEach(function (t) {
-    t.addEventListener("click", function () { setTab(t.getAttribute("data-tab")); });
-    t.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); setTab(tab === "social" ? "video" : "social", true); }
-    });
-  });
+  /* ---------- Digital kit ---------- */
   var kitBtn = $("#kit-copy-btn");
   if (kitBtn) {
+    $("#kit-copy").textContent = SOCIAL_POST;
     kitBtn.addEventListener("click", function () {
-      var k = KIT[tab];
-      copyText(k.copy).then(
-        function () { $("#kit-status").textContent = k.ok; },
+      copyText(SOCIAL_POST).then(
+        function () { $("#kit-status").textContent = "تم نسخ المنشور."; },
         function () { $("#kit-status").textContent = "تعذّر النسخ التلقائي. حدّدي النص وانسخيه يدويًا."; }
       );
     });
-    setTab("social");
   }
 
   /* ---------- Contact form → email (FormSubmit) ---------- */
