@@ -3,7 +3,7 @@
  */
 window.ETMENI_CONFIG = {
   // Public URL where this page will live (used in share messages, social post, QR).
-  campaignUrl: "https://bhapal.com/etmeni/",
+  campaignUrl: "https://landing.pinkoctober.tonystark-webmaster.com/",
 
   // Safety Map site.
   safetyMapUrl: "https://pinkoctober.tonystark-webmaster.com/",
