@@ -147,9 +147,6 @@ h3{font-size:21px}
 /* Digital kit */
 .kit-grid{display:grid;grid-template-columns:2fr 1fr;gap:25px}
 .kit-content{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px}
-.kit-tabs{display:flex;gap:10px;border-bottom:1px solid var(--line);margin-bottom:28px}
-.kit-tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);font-size:14px;padding:0 10px 15px}
-.kit-tabs button[aria-selected=true]{border-bottom-color:var(--rose);color:var(--rose);font-weight:700}
 .kit-content h3{font-size:21px;margin-top:12px}
 .kit-copy{white-space:pre-line;margin-block:20px 25px;font-size:15px;line-height:2.15;overflow-wrap:anywhere}
 .kit-status{font-size:13px;color:var(--rose);min-height:22px;margin-top:10px}
