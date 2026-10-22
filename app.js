@@ -61,6 +61,21 @@
 
   /* ---------- Questionnaire ---------- */
   var card = $("#question-card");
+
+  /* Anonymous statistics: only the three answer numbers are sent when the
+     questionnaire is finished — no name, IP, id or anything that could
+     identify the visitor. Failure is silent; the result screen never waits. */
+  function sendSurvey(a) {
+    if (!CFG.surveyApiUrl || !CFG.surveyApiKey) return;
+    try {
+      fetch(CFG.surveyApiUrl, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json", apikey: CFG.surveyApiKey, Prefer: "return=minimal" },
+        body: JSON.stringify({ q1: a[0], q2: a[1], q3: a[2] })
+      }).catch(function () {});
+    } catch (e) {}
+  }
   var step = 0;
   var answers = [-1, -1, -1];
   var done = false;
@@ -136,7 +151,10 @@
       var b = e.target.closest("[data-q]");
       if (!b) return;
       var act = b.getAttribute("data-q");
-      if (act === "next" && answers[step] >= 0) { step < 2 ? step++ : (done = true); render(true); }
+      if (act === "next" && answers[step] >= 0) {
+        if (step < 2) { step++; } else { done = true; sendSurvey(answers); }
+        render(true);
+      }
       else if (act === "back" && step > 0) { step--; render(true); }
       else if (act === "restart") { step = 0; answers = [-1, -1, -1]; done = false; render(true); }
     });

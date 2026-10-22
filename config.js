@@ -8,6 +8,11 @@ window.ETMENI_CONFIG = {
   // Safety Map site.
   safetyMapUrl: "https://pinkoctober.tonystark-webmaster.com/",
 
+  // Anonymous survey statistics (Supabase). The publishable key is meant to be
+  // public: row-level security only lets visitors add a response, never read.
+  surveyApiUrl: "https://otyyvuqpluycwwdayvzr.supabase.co/rest/v1/survey_responses",
+  surveyApiKey: "sb_publishable_dXkFh1_MVEe6IiJCPVg4Aw_MkyA-a9r",
+
   // Contact form → email, via FormSubmit (free, no key, no backend).
   // First message sent from the live site triggers an "Activate Form" email to this
   // inbox — click it once. After activation FormSubmit also emails you a random
