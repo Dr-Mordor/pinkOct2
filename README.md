@@ -42,6 +42,6 @@ python -c "import qrcode;q=qrcode.QRCode(border=2,box_size=10);q.add_data('https
 ```
 
 ## Changes vs. the original
-- Removed: share counter, usage analytics, screening-request form, admin dashboard.
+- Removed: share counter, tracking cookies, screening-request form, admin dashboard.
 - Added: contact form that emails bha.palestine@gmail.com (FormSubmit); restart button on questionnaire result; campaign + Safety Map core messages.
-- Privacy section rewritten to match (no tracking, quiz answers never leave the device).
+- Questionnaire: when finished, the three answer numbers (anonymous, no id) are sent to the Supabase project `pink-october-nablus` and shown in the Safety Map admin analytics. Privacy text says so.
